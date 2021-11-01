@@ -11,6 +11,16 @@ const defaultState = {
 	city: '',
 	postCode: '',
 	suburb: '',
+
+	// repair details
+	purchaseDate: '',
+	repairDate: '',
+	underWarranty: false,
+	imeiNumber: '',
+	make: 'Apple',
+	modelNumber: '',
+	faultCategory: 'Battery',
+	description: ''
 }
 
 const phoneBookin = (state = defaultState, action) => {
