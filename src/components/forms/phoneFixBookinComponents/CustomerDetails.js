@@ -1,8 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
+import { UPDATE_BOOKIN_FIELD } from "../../../contants/actionTypes";
 import FormField from "../FormField";
 
+const mapDispatchToProps = (dispatch) => ({
+	updateState: (field, value) =>
+		dispatch({
+			type: UPDATE_BOOKIN_FIELD,
+			field,
+			value
+		}),
+})
+
+const mapStateToProps = (state) => ({
+	...state.bookin,
+})
 
 class CustomerDetails extends React.Component {
+	constructor() {
+		super()
+		this.onFieldChange = e => {
+			this.props.updateState(e.target.name, e.target.value)
+		}
+	}
 	render() {
 		return (
 		<div className="grid gap-2 px-6 py-3 bg-lightYellow">
@@ -10,12 +30,24 @@ class CustomerDetails extends React.Component {
 			<div className="flex flex-col">
 				<h1>Customer Type</h1>
 				<label htmlFor="individual" className="flex space-x-2 items-center">
-					<input type="radio" name="customerType" id="individual" value="individual" />
+					<input
+						type="radio"
+						name="customerType"
+						id="individual"
+						value="individual"
+						onChange={this.onFieldChange}
+					/>
 					<span>Individual</span>
 				</label>
-				<label htmlFor="company" className="flex space-x-2 items-center">
-					<input type="radio" name="customerType" id="company" value="company" />
-					<span>Company</span>
+				<label htmlFor="business" className="flex space-x-2 items-center">
+					<input
+						type="radio"
+						name="customerType"
+						id="business"
+						value="business"
+						onChange={this.onFieldChange}
+					/>
+					<span>Business</span>
 				</label>
 			</div>
 
@@ -24,6 +56,8 @@ class CustomerDetails extends React.Component {
 				name="title"
 				type="text"
 				required={true}
+				onChange={this.onFieldChange}
+				value={this.props.title}
 				choices={['Mr', 'Mrs', 'Ms', 'Miss', 'Dr']}
 			/>
 
@@ -31,46 +65,62 @@ class CustomerDetails extends React.Component {
 				label="First Name"
 				name="firstName"
 				type="text"
+				onChange={this.onFieldChange}
+				value={this.props.firstName}
 				required={true}
 			/>
 			<FormField 
 				label="Last Name"
 				name="lastName"
 				type="text"
+				onChange={this.onFieldChange}
+				value={this.props.lastName}
 				required={true}
 			/>
 			<FormField 
 				label="Street"
 				name="street"
 				type="text"
+				onChange={this.onFieldChange}
+				value={this.props.street}
 				required={true}
 			/>
 			<FormField 
 				label="Suburb"
 				name="suburb"
 				type="text"
+				onChange={this.onFieldChange}
+				value={this.props.suburb}
 			/>
 			<FormField 
 				label="City"
 				name="city"
 				type="text"
+				onChange={this.onFieldChange}
+				value={this.props.city}
 				required={true}
 			/>
 			<FormField 
 				label="Post Code"
 				name="postCode"
 				type="text"
+				onChange={this.onFieldChange}
+				value={this.props.postCode}
 			/>
 			<FormField 
 				label="Phone Number"
 				name="phoneNumber"
 				type="tel"
+				onChange={this.onFieldChange}
+				value={this.props.phoneNumber}
 				required={true}
 			/>
 			<FormField 
 				label="Email"
 				name="email"
 				type="email"
+				onChange={this.onFieldChange}
+				value={this.props.email}
 				required={true}
 			/>
 		</div>
@@ -78,4 +128,4 @@ class CustomerDetails extends React.Component {
 	}
 }
 
-export default CustomerDetails;
+export default connect(mapStateToProps, mapDispatchToProps)(CustomerDetails);

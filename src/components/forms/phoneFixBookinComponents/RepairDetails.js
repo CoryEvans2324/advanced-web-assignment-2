@@ -1,7 +1,33 @@
 import React from "react";
+import { connect } from "react-redux";
+import { UPDATE_BOOKIN_FIELD } from "../../../contants/actionTypes";
 import FormField from "../FormField";
 
+const mapDispatchToProps = (dispatch) => ({
+	updateState: (field, value) =>
+		dispatch({
+			type: UPDATE_BOOKIN_FIELD,
+			field,
+			value
+		}),
+})
+
+const mapStateToProps = (state) => ({
+	...state.bookin,
+})
+
 class RepairDetails extends React.Component {
+	constructor() {
+		super()
+		this.onFieldChange = e => {
+			if (e.target.type === 'checkbox') {
+				this.props.updateState(e.target.name, e.target.checked)
+				return
+			}
+
+			this.props.updateState(e.target.name, e.target.value)
+		}
+	}
 	render() {
 		return (
 			<div className="grid gap-2 px-6 py-3 bg-lightSky">
@@ -11,6 +37,8 @@ class RepairDetails extends React.Component {
 					label="Purchase Date"
 					name="purchaseDate"
 					type="date"
+					value={this.props.purchaseDate}
+					onChange={this.onFieldChange}
 					required={true}
 				/>
 
@@ -18,6 +46,8 @@ class RepairDetails extends React.Component {
 					label="Repair Date"
 					name="repairDate"
 					type="date"
+					value={this.props.repairDate}
+					onChange={this.onFieldChange}
 					required={true}
 				/>
 
@@ -25,12 +55,16 @@ class RepairDetails extends React.Component {
 					label="Under Warranty"
 					name="underWarranty"
 					type="checkbox"
+					value={this.props.underWarrenty}
+					onChange={this.onFieldChange}
 				/>
 
 				<FormField
 					label="IMEI Number"
 					name="imeiNumber"
 					type="text"
+					value={this.props.imeiNumber}
+					onChange={this.onFieldChange}
 					required={true}
 				/>
 
@@ -38,6 +72,8 @@ class RepairDetails extends React.Component {
 					label="Make"
 					name="make"
 					type="text"
+					value={this.props.make}
+					onChange={this.onFieldChange}
 					required={true}
 					choices={['Apple', 'LG', 'Motorola', 'Nokia', 'Samsung', 'Sony', 'Other']}
 				/>
@@ -46,6 +82,8 @@ class RepairDetails extends React.Component {
 					label="Model Number"
 					name="modelNumber"
 					type="text"
+					value={this.props.modelNumber}
+					onChange={this.onFieldChange}
 					required={true}
 				/>
 
@@ -53,6 +91,8 @@ class RepairDetails extends React.Component {
 					label="Fault Category"
 					name="faultCategory"
 					type="text"
+					value={this.props.faultCategory}
+					onChange={this.onFieldChange}
 					required={true}
 					choices={['Battery', 'Charger', 'Display', 'Headphone', 'Microphone', 'Other']}
 				/>
@@ -61,6 +101,8 @@ class RepairDetails extends React.Component {
 					label="Description"
 					name="description"
 					type="text"
+					value={this.props.description}
+					onChange={this.onFieldChange}
 					required={true}
 					isTextArea={true}
 				/>
@@ -69,4 +111,4 @@ class RepairDetails extends React.Component {
 	}
 }
 
-export default RepairDetails;
+export default connect(mapStateToProps, mapDispatchToProps)(RepairDetails);

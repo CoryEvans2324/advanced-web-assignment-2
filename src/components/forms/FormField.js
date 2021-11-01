@@ -12,7 +12,7 @@ export default function FormField(props) {
 		return (
 			<div className={wrapperClass}>
 				{label}
-				<select name={props.name} id={props.name} className="form-select">
+				<select name={props.name} id={props.name} value={props.value} onChange={props.onChange} className="form-select">
 					{props.choices.map((choice) => {
 						return <option key={choice} value={choice}>{choice}</option>
 					})}
