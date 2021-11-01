@@ -26,10 +26,10 @@ class PhoneFixBookin extends React.Component {
 	}
 	render() {
 		return (
-		<form className="grid md:grid-cols-3" onSubmit={this.submit}>
+		<form className="grid md:grid-cols-2 xl:grid-cols-3" onSubmit={this.submit}>
 			<CustomerDetails />
 			<RepairDetails />
-			<div className="flex flex-col">
+			<div className="flex flex-col lg:flex-row md:col-span-2 xl:flex-col xl:col-span-1">
 				<CourtesyPhone />
 				<RepairCost />
 			</div>
