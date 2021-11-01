@@ -35,6 +35,7 @@ class CustomerDetails extends React.Component {
 						name="customerType"
 						id="individual"
 						value="individual"
+						checked={this.props.customerType === "individual"}
 						onChange={this.onFieldChange}
 					/>
 					<span>Individual</span>
@@ -45,6 +46,7 @@ class CustomerDetails extends React.Component {
 						name="customerType"
 						id="business"
 						value="business"
+						checked={this.props.customerType === "business"}
 						onChange={this.onFieldChange}
 					/>
 					<span>Business</span>

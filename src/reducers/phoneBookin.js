@@ -1,7 +1,7 @@
 import { ADD_COURTESY_CHARGER, ADD_COURTESY_IPHONE, ADD_COURTESY_OTHER, REMOVED_COURTESY_LINE_ITEM, RESET_BOOKIN_STATE, UPDATE_BOOKIN_FIELD } from "../contants/actionTypes"
 
 const defaultState = {
-	customerType: '',
+	customerType: 'individual',
 	title: 'Mr',
 	firstName: '',
 	lastName: '',
