@@ -4,7 +4,7 @@ export default function FormField(props) {
 		wrapperClass = 'flex space-x-2 space-x-reverse items-center flex-row-reverse justify-end'
 	}
 
-	const label = (<label htmlFor={props.name} className="flex items-center">
+	const label = (<label htmlFor={props.name} className="flex items-center select-none">
 		{props.label}&nbsp;{props.required && <span className="text-red-500">*</span>}
 	</label>)
 
