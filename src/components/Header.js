@@ -5,7 +5,7 @@ class Header extends React.Component {
 	render() {
 		const activeClassName = 'bg-green-500'
 		return (<div className="flex justify-between">
-			<div class="flex items-center ml-4 md:ml-12">
+			<div className="flex items-center ml-4 md:ml-12">
 				<h1 className="text-4xl text-white font-bold">
 					{this.props.title}
 				</h1>

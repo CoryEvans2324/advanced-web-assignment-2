@@ -16,9 +16,18 @@ const mapStateToProps = (state) => ({
 	...state.bookin,
 })
 
+const monthDiff = (dateFrom, dateTo) => {
+	return dateTo.getMonth() - dateFrom.getMonth() + 
+		(12 * (dateTo.getFullYear() - dateFrom.getFullYear()))
+}
+
 class RepairDetails extends React.Component {
 	constructor() {
 		super()
+		this.state = {
+			underWarrantyDisabled: false
+		}
+		this.underWarrantyRef = React.createRef()
 		this.onFieldChange = e => {
 			if (e.target.type === 'checkbox') {
 				this.props.updateState(e.target.name, e.target.checked)
@@ -26,9 +35,49 @@ class RepairDetails extends React.Component {
 			}
 
 			this.props.updateState(e.target.name, e.target.value)
+			switch (e.target.name) {
+			case 'purchaseDate':
+				let today = new Date()
+				let purchaseDate = new Date(e.target.value)
+				if (!(purchaseDate instanceof Date && !isNaN(purchaseDate))) {
+					purchaseDate = new Date(0)
+				}
+				var diffMonths = monthDiff(purchaseDate, today)
+				if (diffMonths > 24) {
+					this.props.updateState('underWarranty', false)
+					this.setState({ underWarrantyDisabled: true })
+					this.underWarrantyRef.current.checked = false
+				} else {
+					this.setState({ underWarrantyDisabled: false })
+				}
+				break
+			default:
+				break
+			}
 		}
 	}
-	render() {
+	checkValidity() {
+		let isValid = true
+		var today = new Date()
+		var repairDate = new Date(this.props.repairDate)
+		var purchaseDate = new Date(this.props.purchaseDate)
+		if (!(repairDate instanceof Date && !isNaN(repairDate))) {
+			return false
+		}
+		if (!(purchaseDate instanceof Date && !isNaN(purchaseDate))) {
+			return false
+		}
+
+		if (repairDate < purchaseDate) isValid = false
+		if (repairDate > today) isValid = false
+		if (purchaseDate > today) isValid = false
+
+		if (this.props.imeiNumber.length !== 15) isValid = false
+		
+		return isValid
+	}
+
+	render() {		
 		return (
 			<div className="grid gap-2 px-6 py-3 bg-lightSky">
 				<h1 className="text-3xl font-semibold">Repair Details</h1>
@@ -55,8 +104,10 @@ class RepairDetails extends React.Component {
 					label="Under Warranty"
 					name="underWarranty"
 					type="checkbox"
+					inputRef={this.underWarrantyRef}
 					value={this.props.underWarrenty}
 					onChange={this.onFieldChange}
+					disabled={this.state.underWarrantyDisabled}
 				/>
 
 				<FormField

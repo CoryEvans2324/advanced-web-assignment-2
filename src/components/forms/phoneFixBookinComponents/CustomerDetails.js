@@ -21,7 +21,23 @@ class CustomerDetails extends React.Component {
 		super()
 		this.onFieldChange = e => {
 			this.props.updateState(e.target.name, e.target.value)
+			
+			// check validity of inputs
+			this.props.setValidity(this.checkValidity())
 		}
+	}
+	checkValidity() {
+		// first and last name
+		if (!this.props.firstName.match(/^[a-zA-Z- ]+$/) || !this.props.lastName.match(/^[a-zA-Z- ]+$/)) return false
+		if (this.props.postCode.length !== 4) return false
+		if (!this.props.phoneNumber.match(/^[0-9 ()\-+]+$/)) return false
+
+		// email
+		if (this.props.email.length < 5) return false
+		if (!this.props.email.includes('@')) return false
+		if (!this.props.email.split('@')[1].includes('.')) return false
+
+		return true
 	}
 	render() {
 		return (
