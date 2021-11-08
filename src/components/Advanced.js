@@ -1,13 +1,11 @@
 import React from "react";
+import StoreMap from "./advanced/StoreMap";
 
 class Advanced extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Advanced</h1>
-				<p>
-					This is the advanced page.
-				</p>
+				<StoreMap />
 			</div>
 		);
 	}

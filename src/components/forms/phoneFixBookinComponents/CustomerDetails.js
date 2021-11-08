@@ -41,7 +41,7 @@ class CustomerDetails extends React.Component {
 	}
 	render() {
 		return (
-		<div className="grid gap-2 px-6 py-3 bg-lightYellow">
+		<div className="flex flex-col space-y-2 px-6 py-3 bg-lightYellow">
 			<h1 className="text-3xl font-semibold">Customer Details</h1>
 			<div className="flex flex-col">
 				<h1>Customer Type</h1>

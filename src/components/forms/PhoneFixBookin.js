@@ -6,6 +6,7 @@ import RepairCost from "./phoneFixBookinComponents/RepairCost";
 import RepairDetails from "./phoneFixBookinComponents/RepairDetails";
 import { connect } from "react-redux";
 import { RESET_BOOKIN_STATE } from "../../contants/actionTypes";
+import { Link } from "react-router-dom";
 
 const mapDispatchToProps = (dispatch) => ({
 	submit: () => dispatch(push('/jobsheet')),
@@ -62,10 +63,10 @@ class PhoneFixBookin extends React.Component {
 						type="Submit"
 					>Submit</button>
 
-					<a
+					<Link
+						to="/faq"
 						className="w-32 py-2 bg-white rounded-sm block text-center"
-						href="/"
-					>FAQ</a>
+					>FAQ</Link>
 				</div>
 			</div>
 		</form>

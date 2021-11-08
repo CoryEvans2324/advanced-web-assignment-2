@@ -79,7 +79,7 @@ class RepairDetails extends React.Component {
 
 	render() {		
 		return (
-			<div className="grid gap-2 px-6 py-3 bg-lightSky">
+			<div className="flex flex-col space-y-2 px-6 py-3 bg-lightSky">
 				<h1 className="text-3xl font-semibold">Repair Details</h1>
 
 				<FormField
