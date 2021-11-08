@@ -19,7 +19,9 @@ const mapDispatchToProps = (dispatch) => ({
 		dispatch({ type: LOAD_STORE_LOCATIONS, payload: locations }),
 })
 
-// TODO: map store
+const mapStateToProps = (state) => ({
+	locations: state.storeLocations.locations,
+})
 
 class StoreMap extends React.Component {
 	componentDidMount() {
@@ -32,22 +34,23 @@ class StoreMap extends React.Component {
 				}
 			}
 		).then(res => res.json()).then(data => {
-			console.log(data);
+			this.props.loadLocations(data)
 		})
 	}
 	render() {
-		const position = [-39.546714, 176.839306]
 		return (<>
-			<MapContainer center={position} zoom={13} style={{height: '400px'}}>
+			<MapContainer center={[-38.967649, 176.047433]} zoom={7} style={{height: '750px'}}>
 				<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution={'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'} />
-				<Marker position={position} icon={icon}>
-					<Popup>
-						EIT Hawkes Bay
-					</Popup>
-				</Marker>
+				{this.props.locations.map((location, index) => {
+					return <Marker key={index} position={[location.lat, location.lon]} icon={icon}>
+						<Popup>
+							{location.name}
+						</Popup>
+					</Marker>
+				})}
 			</MapContainer>
 		</>)
 	}
 }
 
-export default connect(null, mapDispatchToProps)(StoreMap);
+export default connect(mapStateToProps, mapDispatchToProps)(StoreMap);

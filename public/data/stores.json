@@ -3,5 +3,15 @@
 		"name": "EIT Hawkes Bay",
 		"lat": -39.546714,
 		"lon": 176.839306
+	},
+	{
+		"name": "EIT Auckland",
+		"lat": -36.848389,
+		"lon": 174.763336
+	},
+	{
+		"name": "EIT Tairāwhiti",
+		"lat": -38.662387,
+		"lon": 178.022960
 	}
 ]

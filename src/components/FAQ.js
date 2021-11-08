@@ -22,6 +22,9 @@ class FAQ extends React.Component {
 		}
 	}
 	componentDidMount() {
+		this.fetchData()
+	}
+	fetchData() {
 		fetch('https://cors-anywhere.herokuapp.com/https://danieldangs.com/itwd6-408/json/faqs.json')
 			.then(res => res.json())
 			.then(data => {
@@ -31,20 +34,39 @@ class FAQ extends React.Component {
 	}
 	render() {
 		return (<div className="bg-green-100 px-8 py-4">
-			<div className="flex flex-col">
-				<input type="text" placeholder="search"
-					className="placeholder-shown:italic"
-					value={this.props.faq.query}
-					onChange={this.onSearchChange}
-				/>
+			<div className="max-w-[900px] mx-auto">
+				<div className="relative">
+					<input type="text" placeholder="search"
+						className="placeholder-shown:italic w-full"
+						value={this.props.faq.query}
+						onChange={this.onSearchChange}
+					/>
+					<div className="absolute bottom-0 right-0">
+						<a
+							href="https://cors-anywhere.herokuapp.com/corsdemo"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-gray-600 text-sm p-1"
+						>
+							Enable CORS
+						</a>
+						|
+						<button
+							onClick={() => this.fetchData()}
+							className="text-gray-600 text-sm p-1"
+						>
+							Reload
+						</button>
+					</div>
+				</div>
+				<ul className="mt-4 grid gap-4">
+					{this.props.faq.faqs.filter(faqFilterFunc(this.props.faq.query)).map((faq, i) => (
+						<li key={i} className="bg-yellow-100 shadow flex flex-col space-y-4 p-4">
+							{ faqEntry(faq) }
+						</li>
+					))}
+				</ul>
 			</div>
-			<ul className="mt-4 grid gap-4">
-				{this.props.faq.faqs.filter(faqFilterFunc(this.props.faq.query)).map((faq, i) => (
-					<li key={i} className="bg-yellow-100 shadow flex flex-col space-y-4 p-4">
-						{ faqEntry(faq) }
-					</li>
-				))}
-			</ul>
 		</div>)
 	}
 }
