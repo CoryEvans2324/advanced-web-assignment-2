@@ -42,6 +42,7 @@ class RepairDetails extends React.Component {
 				if (!(purchaseDate instanceof Date && !isNaN(purchaseDate))) {
 					purchaseDate = new Date(0)
 				}
+
 				var diffMonths = monthDiff(purchaseDate, today)
 				if (diffMonths > 24) {
 					this.props.updateState('underWarranty', false)
@@ -55,26 +56,6 @@ class RepairDetails extends React.Component {
 				break
 			}
 		}
-	}
-	checkValidity() {
-		let isValid = true
-		var today = new Date()
-		var repairDate = new Date(this.props.repairDate)
-		var purchaseDate = new Date(this.props.purchaseDate)
-		if (!(repairDate instanceof Date && !isNaN(repairDate))) {
-			return false
-		}
-		if (!(purchaseDate instanceof Date && !isNaN(purchaseDate))) {
-			return false
-		}
-
-		if (repairDate < purchaseDate) isValid = false
-		if (repairDate > today) isValid = false
-		if (purchaseDate > today) isValid = false
-
-		if (this.props.imeiNumber.length !== 15) isValid = false
-		
-		return isValid
 	}
 
 	render() {		

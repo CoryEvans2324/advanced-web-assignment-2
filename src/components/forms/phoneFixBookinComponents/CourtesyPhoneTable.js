@@ -26,7 +26,7 @@ class CourtesyPhoneTable extends React.Component {
 					{this.props.lineItems.map((lineItem, i) => (
 						<tr
 							key={i}
-							className="cursor-pointer hover:bg-red-200"
+							className={this.props.disabled ? "": "cursor-pointer hover:bg-red-200"}
 							onClick={() => { if (!this.props.disabled) this.props.removeLineItem(i)}}
 						>
 							<td className="border border-black px-2 py-1">{lineItem.name}</td>

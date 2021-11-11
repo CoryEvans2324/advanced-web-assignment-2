@@ -5,48 +5,42 @@ import CustomerDetails from "./phoneFixBookinComponents/CustomerDetails";
 import RepairCost from "./phoneFixBookinComponents/RepairCost";
 import RepairDetails from "./phoneFixBookinComponents/RepairDetails";
 import { connect } from "react-redux";
-import { RESET_BOOKIN_STATE } from "../../contants/actionTypes";
+import { RESET_BOOKIN_STATE, VALIDATE_BOOKIN_FIELDS } from "../../contants/actionTypes";
 import { Link } from "react-router-dom";
 
 const mapDispatchToProps = (dispatch) => ({
+	validate: () => dispatch({ type: VALIDATE_BOOKIN_FIELDS }),
 	submit: () => dispatch(push('/jobsheet')),
 	reset: () => dispatch({ type: RESET_BOOKIN_STATE })
+})
+
+const mapStateToProps = (state) => ({
+	formValid: state.bookin.formValid,
+	formValidErrors: state.bookin.formValidErrors,
 })
 
 class PhoneFixBookin extends React.Component {
 	constructor() {
 		super()
+		this.CustomerDetailsRef = React.createRef()
 		this.submit = (e) => {
 			e.preventDefault()
-			this.props.submit()
+			this.props.validate()
+
+			if (this.props.formValid) {
+				this.props.submit()
+			}
 		}
 		this.reset = (e) => {
 			e.preventDefault()
 			this.props.reset()
 		}
-
-		this.state = {
-			customerDetailsValid: false,
-			repairDetailsValid: false
-		}
-		this.setCustomerDetailsValid = (valid) => {
-			this.setState({ customerDetailsValid: valid })
-		}
-		this.setRepairDetailsValid = (valid) => {
-			this.setState({ repairDetailsValid: valid })
-		}
 	}
 	render() {
 		return (
 		<form className="grid md:grid-cols-2 xl:grid-cols-3" onSubmit={this.submit}>
-			<CustomerDetails
-				valid={this.state.customerDetailsValid}
-				setValidity={this.setCustomerDetailsValid}
-			/>
-			<RepairDetails
-				valid={this.state.repairDetailsValid}
-				setValidity={this.setRepairDetailsValid}
-			/>
+			<CustomerDetails />
+			<RepairDetails />
 			<div className="flex flex-col lg:flex-row md:col-span-2 xl:flex-col xl:col-span-1">
 				<CourtesyPhone />
 				<RepairCost />
@@ -74,4 +68,4 @@ class PhoneFixBookin extends React.Component {
 	}
 }
 
-export default connect(null, mapDispatchToProps)(PhoneFixBookin)
+export default connect(mapStateToProps, mapDispatchToProps)(PhoneFixBookin)

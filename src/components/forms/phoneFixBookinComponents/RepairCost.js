@@ -1,30 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { getTotalsText } from '../util'
+
 const mapStateToProps = state => ({
 	...state.bookin
 })
 
 class RepairCost extends React.Component {
 	render() {
-		var bondTotal = 0
-		if (this.props.customerType !== 'business') {
-			for (let i = 0; i < this.props.lineItems.length; i++) {
-				const item = this.props.lineItems[i];
-				bondTotal += item.cost
-			}
-		}
-		const bondText = this.props.customerType === 'business' ? "No Bond" : `$${bondTotal.toFixed(2)}`;
-
-		const serviceFee = this.props.underWarranty ? 0 : 85;
-		const serviceFeeText = `$${serviceFee.toFixed(2)}`;
-
-		const total = bondTotal + serviceFee;
-		const totalText = `$${total.toFixed(2)}`;
-		const gst = total * 0.15;
-		const gstText = `$${gst.toFixed(2)}`;
-		const totalGst = total + gst;
-		const totalGstText = `$${totalGst.toFixed(2)}`;
+		const { bondText, serviceFeeText, totalText, gstText, totalGstText } = getTotalsText(
+			this.props.lineItems,
+			this.props.underWarranty,
+			this.props.customerType
+		)
 
 		return (
 			<div className="flex-1 bg-orange">
@@ -32,19 +21,19 @@ class RepairCost extends React.Component {
 					<h1 className="text-3xl font-semibold">Cost</h1>
 					<div className="grid grid-cols-2 gap-1">
 						<h2>Bond:</h2>
-						<input disabled className="bg-white" value={bondText} />
+						<input disabled className="bg-white px-1" value={bondText} />
 
 						<h2>Service Fee:</h2>
-						<input disabled className="bg-white" value={serviceFeeText} />
+						<input disabled className="bg-white px-1" value={serviceFeeText} />
 
 						<h2>Total:</h2>
-						<input disabled className="bg-white" value={totalText} />
+						<input disabled className="bg-white px-1" value={totalText} />
 
 						<h2>GST:</h2>
-						<input disabled className="bg-white" value={gstText} />
+						<input disabled className="bg-white px-1" value={gstText} />
 
 						<h2>Total(+GST):</h2>
-						<input disabled className="bg-white" value={totalGstText} />
+						<input disabled className="bg-white px-1" value={totalGstText} />
 					</div>
 				</div>
 			</div>

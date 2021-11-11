@@ -24,6 +24,10 @@ const mapStateToProps = (state) => ({
 })
 
 class StoreMap extends React.Component {
+	constructor() {
+		super()
+		this.map = null
+	}
 	componentDidMount() {
 		fetch(
 			'/data/stores.json',
@@ -39,7 +43,12 @@ class StoreMap extends React.Component {
 	}
 	render() {
 		return (<>
-			<MapContainer center={[-38.967649, 176.047433]} zoom={7} style={{height: '750px'}}>
+			<MapContainer
+				center={[-38.967649, 176.047433]}
+				zoom={7}
+				style={{height: '750px'}}
+				whenCreated={(map) => {this.map = map}}
+			>
 				<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution={'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'} />
 				{this.props.locations.map((location, index) => {
 					return <Marker key={index} position={[location.lat, location.lon]} icon={icon}>
@@ -49,6 +58,18 @@ class StoreMap extends React.Component {
 					</Marker>
 				})}
 			</MapContainer>
+			<ul className="max-w-md mx-auto bg-white mt-4 rounded-sm shadow p-4">
+				{this.props.locations.map((location, i) => (
+					<li key={i}
+						className="hover:bg-gray-200 shadow-sm px-2 py-1 my-1 rounded-sm cursor-pointer"
+						onClick={() => {
+							this.map.flyTo([location.lat, location.lon], 15)
+						}}
+					>
+						<span>{location.name}</span>
+					</li>
+				))}
+			</ul>
 		</>)
 	}
 }
