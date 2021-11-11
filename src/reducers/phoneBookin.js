@@ -1,4 +1,4 @@
-import { ADD_COURTESY_CHARGER, ADD_COURTESY_IPHONE, ADD_COURTESY_OTHER, REMOVED_COURTESY_LINE_ITEM, RESET_BOOKIN_STATE, UPDATE_BOOKIN_FIELD, VALIDATE_BOOKIN_FIELDS } from "../contants/actionTypes"
+import { ADD_COURTESY_CHARGER, ADD_COURTESY_IPHONE, ADD_COURTESY_OTHER, BOOKIN_FORM_UNLOADED, CLEAR_BOOKIN_ERROR, REMOVED_COURTESY_LINE_ITEM, RESET_BOOKIN_STATE, UPDATE_BOOKIN_FIELD, VALIDATE_BOOKIN_FIELDS } from "../contants/actionTypes"
 
 const defaultState = {
 	customerType: 'individual',
@@ -62,6 +62,19 @@ const phoneBookin = (state = defaultState, action) => {
 				...state,
 				formValidErrors: errors,
 				formValid: errors.length === 0
+			}
+
+		case CLEAR_BOOKIN_ERROR:
+			return {
+				...state,
+				formValidErrors: state.formValidErrors.filter((error, index) => index !== action.index)
+			}
+
+		case BOOKIN_FORM_UNLOADED:
+			return {
+				...state,
+				formValidErrors: [],
+				formValid: false
 			}
 		default:
 			return state
@@ -136,8 +149,6 @@ function validateBookinFields(state) {
 			message: "IMEI number must be 15 digits long"
 		})
 	}
-
-	console.log(errors);
 	
 	return errors
 }
