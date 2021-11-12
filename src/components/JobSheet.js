@@ -88,7 +88,26 @@ class JobSheet extends React.Component {
 						<span>{formatDate(this.props.repairDate)}</span>
 
 						<h3 className="font-semibold">Under Warranty:</h3>
-						<span>{this.props.underWarranty ? 'YES' : 'NO'}</span>
+						<span>{
+						this.props.underWarranty ?
+							<div className="flex items-center">
+								<span>Yes</span>
+								<svg xmlns="http://www.w3.org/2000/svg" className="w-[1em]" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M5 12l5 5l10 -10"></path>
+								</svg>
+							</div>
+							:
+							<div className="flex items-center">
+								<span>No</span>
+								<svg xmlns="http://www.w3.org/2000/svg" className="w-[1em]" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<line x1="18" y1="6" x2="6" y2="18"></line>
+									<line x1="6" y1="6" x2="18" y2="18"></line>
+								</svg>
+							</div>
+						}
+						</span>
 
 						<h3 className="font-semibold">IMEI Number:</h3>
 						<span>{this.props.imeiNumber}</span>
@@ -133,8 +152,8 @@ class JobSheet extends React.Component {
 							<input disabled className="bg-transparent" value={totalText} />
 							<h2>GST:</h2>
 							<input disabled className="bg-transparent" value={gstText} />
-							<h2>Total(+GST):</h2>
-							<input disabled className="bg-transparent" value={totalGstText} />
+							<h2 className="font-semibold">Total(+GST):</h2>
+							<input disabled className="bg-transparent font-semibold" value={totalGstText} />
 						</div>
 					</div>
 				</div>

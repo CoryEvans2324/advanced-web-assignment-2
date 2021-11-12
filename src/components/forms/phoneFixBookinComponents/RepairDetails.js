@@ -81,15 +81,17 @@ class RepairDetails extends React.Component {
 					required={true}
 				/>
 
-				<FormField
-					label="Under Warranty"
-					name="underWarranty"
-					type="checkbox"
-					inputRef={this.underWarrantyRef}
-					value={this.props.underWarrenty}
-					onChange={this.onFieldChange}
-					disabled={this.state.underWarrantyDisabled}
-				/>
+				<div className="px-4">
+					<FormField
+						label="Under Warranty"
+						name="underWarranty"
+						type="checkbox"
+						inputRef={this.underWarrantyRef}
+						value={this.props.underWarrenty}
+						onChange={this.onFieldChange}
+						disabled={this.state.underWarrantyDisabled}
+					/>
+				</div>
 
 				<FormField
 					label="IMEI Number"

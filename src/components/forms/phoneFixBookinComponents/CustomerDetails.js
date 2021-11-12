@@ -29,28 +29,30 @@ class CustomerDetails extends React.Component {
 			<h1 className="text-3xl font-semibold">Customer Details</h1>
 			<div className="flex flex-col">
 				<h1>Customer Type</h1>
-				<label htmlFor="individual" className="flex space-x-2 items-center">
-					<input
-						type="radio"
-						name="customerType"
-						id="individual"
-						value="individual"
-						checked={this.props.customerType === "individual"}
-						onChange={this.onFieldChange}
-					/>
-					<span>Individual</span>
-				</label>
-				<label htmlFor="business" className="flex space-x-2 items-center">
-					<input
-						type="radio"
-						name="customerType"
-						id="business"
-						value="business"
-						checked={this.props.customerType === "business"}
-						onChange={this.onFieldChange}
-					/>
-					<span>Business</span>
-				</label>
+				<div className="px-4">
+					<label htmlFor="individual" className="flex space-x-2 items-center">
+						<input
+							type="radio"
+							name="customerType"
+							id="individual"
+							value="individual"
+							checked={this.props.customerType === "individual"}
+							onChange={this.onFieldChange}
+						/>
+						<span>Individual</span>
+					</label>
+					<label htmlFor="business" className="flex space-x-2 items-center">
+						<input
+							type="radio"
+							name="customerType"
+							id="business"
+							value="business"
+							checked={this.props.customerType === "business"}
+							onChange={this.onFieldChange}
+						/>
+						<span>Business</span>
+					</label>
+				</div>
 			</div>
 
 			<FormField
