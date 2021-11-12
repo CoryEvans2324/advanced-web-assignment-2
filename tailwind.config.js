@@ -19,9 +19,12 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      width: ['children']
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('tailwindcss-children')
   ],
 }
