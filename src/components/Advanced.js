@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Authenticity from "./advanced/Authenticity";
 import StoreMap from "./advanced/StoreMap";
 
-import { URL_PREFIX } from "../../constants";
+import { URL_PREFIX } from "../contants/common";
 
 class Advanced extends React.Component {
 	render() {

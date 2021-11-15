@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { URL_PREFIX } from "../../constants";
+import { URL_PREFIX } from "../contants/common";
 
 class Header extends React.Component {
 	render() {
