@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "https://coryevans2324.github.io/advanced-web-assignment-2/static/css/main.9d68a278.chunk.css",
-    "main.js": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/main.60f75f2c.chunk.js",
-    "main.js.map": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/main.60f75f2c.chunk.js.map",
+    "main.js": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/main.3418ddf6.chunk.js",
+    "main.js.map": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/main.3418ddf6.chunk.js.map",
     "runtime-main.js": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/runtime-main.e76d14c2.js",
     "runtime-main.js.map": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/runtime-main.e76d14c2.js.map",
     "static/css/2.1e76ddd3.chunk.css": "https://coryevans2324.github.io/advanced-web-assignment-2/static/css/2.1e76ddd3.chunk.css",
-    "static/js/2.f668af6d.chunk.js": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/2.f668af6d.chunk.js",
-    "static/js/2.f668af6d.chunk.js.map": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/2.f668af6d.chunk.js.map",
+    "static/js/2.87ac2d09.chunk.js": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/2.87ac2d09.chunk.js",
+    "static/js/2.87ac2d09.chunk.js.map": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/2.87ac2d09.chunk.js.map",
     "index.html": "https://coryevans2324.github.io/advanced-web-assignment-2/index.html",
     "static/css/2.1e76ddd3.chunk.css.map": "https://coryevans2324.github.io/advanced-web-assignment-2/static/css/2.1e76ddd3.chunk.css.map",
     "static/css/main.9d68a278.chunk.css.map": "https://coryevans2324.github.io/advanced-web-assignment-2/static/css/main.9d68a278.chunk.css.map",
-    "static/js/2.f668af6d.chunk.js.LICENSE.txt": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/2.f668af6d.chunk.js.LICENSE.txt"
+    "static/js/2.87ac2d09.chunk.js.LICENSE.txt": "https://coryevans2324.github.io/advanced-web-assignment-2/static/js/2.87ac2d09.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e76d14c2.js",
     "static/css/2.1e76ddd3.chunk.css",
-    "static/js/2.f668af6d.chunk.js",
+    "static/js/2.87ac2d09.chunk.js",
     "static/css/main.9d68a278.chunk.css",
-    "static/js/main.60f75f2c.chunk.js"
+    "static/js/main.3418ddf6.chunk.js"
   ]
 }
