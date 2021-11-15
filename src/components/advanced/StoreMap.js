@@ -4,7 +4,6 @@ import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css'
 import markerPNG from 'leaflet/dist/images/marker-icon.png'
-import userMarkerPNG from '@tabler/icons/icons/circle.svg'
 import L from 'leaflet';
 import { LOAD_STORE_LOCATIONS, SET_USER_LOCATION } from '../../contants/actionTypes';
 
@@ -13,13 +12,6 @@ const icon = new L.icon({
 	iconSize: [25, 41],
 	iconAnchor: [13, 41],
 })
-
-const userMapIcon = new L.icon({
-	iconUrl: userMarkerPNG,
-	iconSize: [25, 25],
-	iconAnchor: [13, 13],
-})
-
 
 const toRadians = (degrees) => degrees * Math.PI / 180;
 
