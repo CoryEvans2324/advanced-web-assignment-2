@@ -7,24 +7,23 @@ import JobSheet from "./JobSheet";
 import Advanced from "./Advanced";
 import FAQ from "./FAQ";
 
-import { URL_PREFIX } from "../contants/common";
 
 class App extends React.Component {
 	render() {
 		return (
 		<Switch>
-			<Route path={`${URL_PREFIX}/advanced`}>
+			<Route path="/advanced">
 				<Header title="Javascript Extension" />
 				<Advanced />
 			</Route>
-			<Route path={`${URL_PREFIX}/faq`}>
+			<Route path="/faq">
 				<Header title="Phone Fix Booking FAQs" />
 				<FAQ />
 			</Route>
-			<Route path={`${URL_PREFIX}/jobsheet`}>
+			<Route path="/jobsheet">
 				<JobSheet />
 			</Route>
-			<Route path={`${URL_PREFIX}/`}>
+			<Route path="/">
 				<Header title="Phone Booking System" />
 				<PhoneFixBookin />
 			</Route>
