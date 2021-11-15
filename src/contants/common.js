@@ -1,0 +1,1 @@
+export const URL_PREFIX = process.env.PUBLIC_URL ? process.env.PUBLIC_URL : '';

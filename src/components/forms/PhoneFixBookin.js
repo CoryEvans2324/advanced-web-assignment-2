@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { BOOKIN_FORM_UNLOADED, CLEAR_BOOKIN_ERROR, RESET_BOOKIN_STATE, VALIDATE_BOOKIN_FIELDS } from "../../contants/actionTypes";
 import { Link } from "react-router-dom";
 import NotificationPopup from "../NotificationPopup";
+import { URL_PREFIX } from "../../contants/common";
 
 const mapDispatchToProps = (dispatch) => ({
 	validate: () => dispatch({ type: VALIDATE_BOOKIN_FIELDS }),
@@ -90,7 +91,7 @@ class PhoneFixBookin extends React.Component {
 					>Submit</button>
 
 					<Link
-						to="/faq"
+						to={`${URL_PREFIX}/faq`}
 						className="w-32 py-2 bg-white rounded-sm block text-center"
 					>FAQ</Link>
 				</div>

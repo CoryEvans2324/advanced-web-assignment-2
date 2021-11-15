@@ -48,7 +48,7 @@ class StoreMap extends React.Component {
 	}
 	componentDidMount() {
 		fetch(
-			'/data/stores.json',
+			(process.env.PUBLIC_URL ? process.env.PUBLIC_URL : '') + '/data/stores.json',
 			{
 				headers: {
 					'Content-Type': 'application/json',

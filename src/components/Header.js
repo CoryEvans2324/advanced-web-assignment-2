@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import { URL_PREFIX } from "../../constants";
+
 class Header extends React.Component {
 	render() {
 		const activeClassName = 'bg-green-500'
@@ -12,10 +14,10 @@ class Header extends React.Component {
 			</div>
 
 			<nav className="grid sm:grid-cols-2 pb-12">
-				<NavLink exact to="/" className="bg-teal text-center px-8 py-1" activeClassName={activeClassName}>
+				<NavLink exact to={`${URL_PREFIX}/`} className="bg-teal text-center px-8 py-1" activeClassName={activeClassName}>
 					Home
 				</NavLink>
-				<NavLink to="/advanced" className="bg-teal text-center px-8 py-1" activeClassName={activeClassName}>
+				<NavLink to={`${URL_PREFIX}/advanced`} className="bg-teal text-center px-8 py-1" activeClassName={activeClassName}>
 					Extension
 				</NavLink>
 			</nav>
