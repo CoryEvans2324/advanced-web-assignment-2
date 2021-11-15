@@ -26,6 +26,7 @@
   "scripts": {
     "start": "BROWSER=none TAILWIND_MODE=watch craco start",
     "build": "craco build",
+    "build:gh-pages": "PUBLIC_URL=https://coryevans2324.github.io/advanced-web-assignment-2 craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
