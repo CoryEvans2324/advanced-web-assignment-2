@@ -11,7 +11,7 @@ class Header extends React.Component {
 				</h1>
 			</div>
 
-			<nav className="grid grid-cols-2 pb-12">
+			<nav className="grid sm:grid-cols-2 pb-12">
 				<NavLink exact to="/" className="bg-teal text-center px-8 py-1" activeClassName={activeClassName}>
 					Home
 				</NavLink>

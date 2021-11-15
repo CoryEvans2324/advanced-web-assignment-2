@@ -1,6 +1,9 @@
 import React from "react";
+import clsx from "clsx";
 import { connect } from "react-redux";
 import { REMOVED_COURTESY_LINE_ITEM } from "../../../contants/actionTypes";
+
+import { IconX } from "@tabler/icons";
 
 const mapDispatchToProps = dispatch => ({
 	removeLineItem: (index) =>
@@ -26,11 +29,29 @@ class CourtesyPhoneTable extends React.Component {
 					{this.props.lineItems.map((lineItem, i) => (
 						<tr
 							key={i}
-							className={this.props.disabled ? "": "cursor-pointer hover:bg-red-200"}
+							className={clsx(
+								'group select-none',
+								this.props.disabled ? "": "cursor-pointer"
+							)}
 							onClick={() => { if (!this.props.disabled) this.props.removeLineItem(i)}}
 						>
-							<td className="border border-black px-2 py-1">{lineItem.name}</td>
-							<td className="border border-black px-2 py-1">${lineItem.cost.toFixed(2)}</td>
+							<td className={clsx(
+								"border border-black px-2 py-1",
+								!this.props.disabled && 'group-hover:bg-red-400'
+								)}>
+									<div>
+										{lineItem.name}
+									</div>
+								</td>
+							<td className={clsx(
+								"border border-black px-2 py-1",
+								!this.props.disabled && 'group-hover:bg-red-400'
+								)}>
+									<div className='relative flex justify-between'>
+										<div>${lineItem.cost.toFixed(2)}</div>
+										<IconX />
+									</div>
+								</td>
 						</tr>
 					))}
 				</tbody>

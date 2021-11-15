@@ -17,6 +17,7 @@ const mapDispatchToProps = dispatch => ({
 class FAQ extends React.Component {
 	constructor() {
 		super()
+		this.enabledCORSRef = React.createRef()
 		this.onSearchChange = event => {
 			this.props.updateSearchField(event.target.value)
 		}
@@ -29,8 +30,11 @@ class FAQ extends React.Component {
 			.then(res => res.json())
 			.then(data => {
 				this.props.loadFAQData(data)
-			}
-		);
+				this.enabledCORSRef.current.classList.remove('text-red-400')
+			})
+			.catch(err => {
+				this.enabledCORSRef.current.classList.add('text-red-600')
+			})
 	}
 	render() {
 		return (<div className="bg-green-100 px-8 py-4">
@@ -47,6 +51,7 @@ class FAQ extends React.Component {
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-gray-600 text-sm p-1"
+							ref={this.enabledCORSRef}
 						>
 							Enable CORS
 						</a>
