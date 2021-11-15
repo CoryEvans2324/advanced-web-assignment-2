@@ -5,8 +5,17 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { createLogger } from "redux-logger";
 import createRootReducer from "./reducer";
 
+const url = process.env.PUBLIC_URL ? new URL(process.env.PUBLIC_URL) : null;
+var basename = null
+if (url) {
+	const segments = url.pathname.split("/");
+	if (segments.length > 1) {
+		basename = segments[1];
+	}
+}
+
 export const history = createBrowserHistory({
-	basename: process.env.PUBLIC_URL
+	basename: basename
 });
 
 const myRouterMiddleware = routerMiddleware(history);
