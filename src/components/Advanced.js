@@ -4,8 +4,6 @@ import { NavLink } from "react-router-dom";
 import Authenticity from "./advanced/Authenticity";
 import StoreMap from "./advanced/StoreMap";
 
-import { URL_PREFIX } from "../contants/common";
-
 class Advanced extends React.Component {
 	render() {
 		return (
@@ -13,7 +11,7 @@ class Advanced extends React.Component {
 				<nav className="bg-teal">
 					<ul className="max-w-2xl mx-auto flex">
 						<li>
-							<NavLink to={`${URL_PREFIX}/advanced`}
+							<NavLink to="/advanced"
 								exact
 								className="p-2 flex flex-col group"
 								activeClassName="children:w-4/5"
@@ -23,7 +21,7 @@ class Advanced extends React.Component {
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to={`${URL_PREFIX}/advanced/storemap`}
+							<NavLink to="/advanced/storemap"
 								exact
 								className="p-2 flex flex-col group"
 								activeClassName="children:w-4/5"
