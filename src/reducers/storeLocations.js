@@ -1,7 +1,8 @@
-import { LOAD_STORE_LOCATIONS } from '../contants/actionTypes';
+import { LOAD_STORE_LOCATIONS, SET_USER_LOCATION } from '../contants/actionTypes';
 
 const defaultState = {
-	locations: []
+	locations: [],
+	currentUserLocation: null
 }
 
 const storeLocations = (state = defaultState, action) => {
@@ -10,6 +11,11 @@ const storeLocations = (state = defaultState, action) => {
 			return {
 				...state,
 				locations: action.payload
+			}
+		case SET_USER_LOCATION:
+			return {
+				...state,
+				currentUserLocation: action.payload
 			}
 		default:
 			return state;
