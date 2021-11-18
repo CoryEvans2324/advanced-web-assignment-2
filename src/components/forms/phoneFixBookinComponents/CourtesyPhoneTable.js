@@ -49,7 +49,7 @@ class CourtesyPhoneTable extends React.Component {
 								)}>
 									<div className='relative flex justify-between'>
 										<div>${lineItem.cost.toFixed(2)}</div>
-										<IconX />
+										{!this.props.disabled && <IconX />}
 									</div>
 								</td>
 						</tr>
